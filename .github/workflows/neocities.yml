@@ -12,7 +12,6 @@ on:
     push:
         branches:
             - main
-            # make sure your branch name matches! (ie. main, master, etc)
 
 jobs:
     deploy:
@@ -26,28 +25,18 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: ${{ env.NODE_VERSION }}
-              # this will use the latest LTS version of Node.js
-              # if you need a specific version, replace ${{ env.NODE_VERSION }} with that version number
+                  cache: "pnpm"
 
-            - name: Get npm cache directory
-              id: npm-cache-dir
-              run: echo "dir=$(npm config get cache)" >> $GITHUB_OUTPUT
-
-            - name: Cache npm dependencies
-              uses: actions/cache@v4
-              id: npm-cache
+            - name: Install pnpm
+              uses: pnpm/action-setup@v2
               with:
-                  path: ${{ steps.npm-cache-dir.outputs.dir }}
-                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: |
-                      ${{ runner.os }}-node-
-              # caches dependencies and other commonly re-used files
-              # so they do not need to be re-installed on each run
+                  version: 8 # Or whatever version you're using
+                  run_install: false
 
             - name: Install dependencies and build site
               run: |
-                  npm ci
-                  npm run build
+                  pnpm install --frozen-lockfile
+                  pnpm run build
 
             - name: Deploy to Neocities
               uses: bcomnes/deploy-to-neocities@master
@@ -56,4 +45,3 @@ jobs:
                   cleanup: false
                   dist_dir: dist
                   api_key: ${{ secrets.NEOCITIES_API_TOKEN }}
-              # if dist_dir is within a subfolder, update the filepath to reflect that
