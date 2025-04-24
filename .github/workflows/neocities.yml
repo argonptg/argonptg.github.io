@@ -30,7 +30,7 @@ jobs:
             - name: Install pnpm
               uses: pnpm/action-setup@v2
               with:
-                  version: 8 # Or whatever version you're using
+                  version: 8
                   run_install: false
 
             - name: Install dependencies and build site
