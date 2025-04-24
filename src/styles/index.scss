@@ -1,0 +1,63 @@
+$bg: #1e1e2e;
+$accent: #89b4fa;
+$bg-2: #181825;
+$bg-3: #11111b;
+$text: #cad3f5;
+$radius: 6px;
+$r-padding: 4px;
+
+#title {
+	font-size: 2.2rem;
+	margin: 0;
+	color: $accent;
+}
+
+#term {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+
+	margin-top: 16px;
+
+	a {
+		text-decoration: none;
+	}
+
+	span {
+		color: $accent;
+		font-weight: bolder;
+	}
+
+	ul {
+		display: flex;
+		flex-direction: row;
+		gap: 16px;
+
+		margin: 0 0 0 0;
+		padding: 0;
+
+		list-style: none;
+
+		li::after {
+			content: "/";
+		}
+	}
+}
+
+#blog {
+	display: flex;
+	flex-direction: column;
+	gap: 1.3rem;
+
+	margin-top: 1.3rem;
+}
+
+#term-s {
+	position: relative;
+	top: 5px;
+	color: $accent;
+}
+
+p {
+	text-align: justify;
+}

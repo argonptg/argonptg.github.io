@@ -1,0 +1,47 @@
+---
+import Head from "../Head.astro";
+import "./Main.scss";
+const { title, frontmatter } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<Head title={title} />
+	</head>
+	<body>
+		<div class="wrapper">
+			<header>
+				<div class="border">
+					<div class="title">
+						<a href="/">~$ echo "cantinho do argon"</a>
+					</div>
+				</div>
+				<img src="/sona.png" alt="sona" width="170" height="170" />
+			</header>
+			<main>
+				<div class="content">
+					<menu>
+						<li>
+							<a href="/sobre">sobre</a>
+						</li>
+						<li>
+							<a href="/projetos">projetos</a>
+						</li>
+						<li>
+							<a href="/blog">blog</a>
+						</li>
+						<li>
+							<a href="/guestbook">guestbook</a>
+						</li>
+					</menu>
+					<article class={frontmatter && "blog"}>
+						<slot />
+						{frontmatter && <span id="sign"> - argonptg</span>}
+					</article>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>

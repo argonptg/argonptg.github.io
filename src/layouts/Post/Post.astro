@@ -1,0 +1,24 @@
+---
+const { title, date, description, url } = Astro.props;
+import "./Post.scss";
+
+const formatDate = (date: string) => {
+	const fmtDate = new Date(date);
+
+	const year = fmtDate.getFullYear().toString().padStart(2, "0"),
+		month = (fmtDate.getMonth() + 1).toString().padStart(2, "0"),
+		day = fmtDate.getDate().toString().padStart(2, "0"),
+		hour = fmtDate.getHours().toString().padStart(2, "0"),
+		minute = fmtDate.getMinutes().toString().padStart(2, "0");
+
+	return `${year}/${month}/${day} às ${hour}:${minute}`;
+};
+---
+
+<a href={url} class="post">
+	<div class="post_title">
+		<h2>{title}</h2>
+		<span>{formatDate(date)}</span>
+	</div>
+	<p>{description}</p>
+</a>

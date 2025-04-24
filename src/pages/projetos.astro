@@ -1,0 +1,12 @@
+---
+import Main from "../layouts/Main/Main.astro";
+import Project from "../layouts/Project/Project.astro";
+import { projectList } from "../layouts/Project/ProjectList";
+import "../styles/index.scss";
+---
+
+<Main>
+	<h1 id="title">Projetos</h1>
+	<span id="term-s">proj/$ ls .</span>
+	{projectList.map((project) => <Project {...project} />)}
+</Main>

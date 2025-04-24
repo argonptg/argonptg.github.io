@@ -1,0 +1,13 @@
+---
+import "./Project.scss";
+const { name, desc, url } = Astro.props;
+---
+
+<div class="project">
+	<a href={url} class="title">
+		{name}
+	</a>
+	<p>
+		{desc}
+	</p>
+</div>
