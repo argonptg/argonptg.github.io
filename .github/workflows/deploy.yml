@@ -1,14 +1,14 @@
-name: GitHub Pages Astro CI
+name: Deploy to GitHub Pages
 
 on:
-    # Ativa o workflow toda vez que você fizer um push para a branch `main`
-    # Usando um nome de branch diferente? Modifique `main` para o nome da sua branch
+    # Trigger the workflow every time you push to the `main` branch
+    # Using a different branch name? Replace `main` with your branch’s name
     push:
         branches: [main]
-    # Permite que esse workflow seja executado manualmente da aba "Actions" no GitHub.
+    # Allows you to run this workflow manually from the Actions tab on GitHub.
     workflow_dispatch:
 
-# Permite que este job clone o repositório e crie uma página de deploy
+# Allow this job to clone the repo and create a page deployment
 permissions:
     contents: read
     pages: write
@@ -20,13 +20,12 @@ jobs:
         steps:
             - name: Checkout your repository using git
               uses: actions/checkout@v4
-            - name: Install, build, and upload your site
-              uses:
-                  withastro/action@v1
-                  # with:
-                  # path: . # A localização da pasta raiz do seu projeto Astro dentro do seu repositório. (opcional)
-                  # node-version: 18 # A versão específica do Node que deve ser utilizada para a build do seu site. A versão padrão é a 18. (opcional)
-                  # package-manager: pnpm@latest # O gerenciador de pacotes usado para instalar as dependências e fazer a build do site. É automaticamente detectado a partir da sua lockfile. (opcional)
+            - name: Install, build, and upload your site output
+              uses: withastro/action@v4
+              with:
+                  # path: . # The root location of your Astro project inside the repository. (optional)
+                  # node-version: 22 # The specific version of Node that should be used to build your site. Defaults to 22. (optional)
+                  package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
 
     deploy:
         needs: build
@@ -37,4 +36,4 @@ jobs:
         steps:
             - name: Deploy to GitHub Pages
               id: deployment
-              uses: actions/deploy-pages@v1
+              uses: actions/deploy-pages@v4
