@@ -4,7 +4,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://argonptg.neocities.org",
+	site: "https://argonptg.uk",
 	markdown: {
 		shikiConfig: {
 			theme: "catppuccin-mocha",
