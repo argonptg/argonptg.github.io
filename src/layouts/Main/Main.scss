@@ -9,163 +9,239 @@ $r-padding: 4px;
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 
 body {
-	background-color: $bg;
-	color: $text;
-	font-family: "JetBrains Mono";
+    background-color: $bg;
+    color: $text;
+    font-family: "JetBrains Mono";
 
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0;
+    padding: 0;
 }
 
 .wrapper {
-	display: flex;
-	flex-direction: column;
-	width: 60%;
-	position: relative;
-	top: -25px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    position: relative;
+    top: -25px;
 
-	header {
-		position: relative;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
+    header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-		top: 2rem;
+        .border {
+            flex-grow: 1;
+            $height: 50px;
 
-		.border {
-			flex-grow: 1;
-			$height: 50px;
+            border-radius: calc($radius + $r-padding);
+            padding: $r-padding;
+            background-color: $accent;
+            height: $height;
 
-			border-radius: calc($radius + $r-padding);
-			padding: $r-padding;
-			background-color: $accent;
-			height: $height;
+            .title {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
 
-			.title {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
+                border-radius: $radius;
+                background-color: $bg-3;
+                height: $height;
 
-				border-radius: $radius;
-				background-color: $bg-3;
-				height: $height;
+                a {
+                    margin: 0 16px;
+                    color: $accent;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+            }
+        }
 
-				a {
-					font-size: 1.7vw;
-					margin: 0 16px;
-					color: $accent;
-					text-decoration: none;
-					font-weight: bold;
-				}
-			}
-		}
+        img {
+            position: relative;
+            z-index: 1000;
+            top: 5px;
+        }
+    }
 
-		img {
-			position: relative;
+    main {
+        z-index: 999;
+        width: auto;
+        background-color: $accent;
+        padding: $r-padding;
+        border-radius: calc($radius + $r-padding);
 
-			top: 5px;
-		}
-	}
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: $r-padding;
 
-	main {
-		width: 100%;
-		background-color: $accent;
-		padding: $r-padding;
-		border-radius: calc($radius + $r-padding);
+            menu {
+                background-color: $bg-2;
+                border-radius: $radius $radius 0 0;
+                margin: 0;
+                padding: 10px 16px;
 
-		.content {
-			display: flex;
-			flex-direction: column;
-			gap: $r-padding;
+                list-style-type: none;
+                display: flex;
+                flex-direction: row;
+                gap: 1.2rem;
 
-			menu {
-				background-color: $bg-2;
-				border-radius: $radius $radius 0 0;
-				margin: 0;
-				padding: 10px 16px;
+                li {
+                    text-decoration: underline;
 
-				list-style-type: none;
-				display: flex;
-				flex-direction: row;
-				gap: 1.2rem;
+                    a {
+                        font-size: 1.2rem;
+                        color: $accent;
+                    }
+                }
+            }
 
-				li {
-					text-decoration: underline;
-					font-size: 1.2rem;
+            article {
+                background-color: $bg-2;
+                border-radius: 0 0 $radius $radius;
+                padding: 32px;
+            }
+        }
+    }
+}
 
-					a {
-						color: $accent;
-					}
-				}
-			}
+// rel smollllllllllllll screen
+@media (max-width: 500px) {
+    .wrapper header .title a {
+        font-size: 1rem !important;
+    }
 
-			article {
-				background-color: $bg-2;
-				border-radius: 0 0 $radius $radius;
-				padding: 32px;
-			}
-		}
-	}
+    .wrapper main .content menu li a {
+        font-size: 0.9rem;
+    }
+}
+
+// rel smol screen
+@media (max-width: 775px) {
+    .wrapper {
+        left: 0;
+        width: 80%;
+
+        header {
+            margin: 16px 0;
+
+            width: 100%;
+
+            img {
+                display: none;
+            }
+
+            .title {
+                a {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
+
+// smol screen
+@media (max-width: 850px) {
+    .wrapper {
+        position: static;
+
+        header {
+            margin: 16px 0;
+
+            width: 100%;
+
+            img {
+                display: none;
+            }
+
+            .title {
+                a {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
+
+// big scrreen :3
+@media (min-width: 850px) {
+    .wrapper {
+        position: static;
+
+        header {
+            position: relative;
+            top: 2rem;
+
+            .title {
+                a {
+                    font-size: 1.7vw;
+                }
+            }
+        }
+    }
 }
 
 .blog {
-	h1 {
-		color: $accent;
-		font-size: 1.8rem;
-		margin: 0;
-	}
+    h1 {
+        color: $accent;
+        font-size: 1.8rem;
+        margin: 0;
+    }
 
-	h2 {
-		color: #9399b2;
-		font-size: 1rem;
-		margin: 0;
-	}
+    h2 {
+        color: #9399b2;
+        font-size: 1rem;
+        margin: 0;
+    }
 
-	h3 {
-		color: $accent;
-	}
+    h3 {
+        color: $accent;
+    }
 
-	a {
-		color: $accent;
-	}
+    a {
+        color: $accent;
+    }
 
-	pre {
-		border: 2px solid $accent;
-		border-radius: $radius;
-		padding: $r-padding;
-	}
+    pre {
+        border: 2px solid $accent;
+        border-radius: $radius;
+        padding: $r-padding;
+    }
 
-	code {
-		border: 1px solid lighten($bg, 5%);
-		border-radius: $radius;
-		padding: 2px;
-		background-color: $bg;
-	}
+    code {
+        border: 1px solid lighten($bg, 5%);
+        border-radius: $radius;
+        padding: 2px;
+        background-color: $bg;
+    }
 
-	p {
-		text-align: justify;
-	}
+    p {
+        text-align: justify;
+    }
 
-	p > code,
-	p,
-	ul > li,
-	ul > li > code,
-	ul,
-	ol {
-		font-size: 0.9rem;
-	}
+    p > code,
+    p,
+    ul > li,
+    ul > li > code,
+    ul,
+    ol {
+        font-size: 0.9rem;
+    }
 
-	img {
-		width: 100%;
-		height: auto;
-	}
+    img {
+        width: 100%;
+        height: auto;
+    }
 
-	#sign {
-		float: right;
-		color: $accent;
-		font-weight: bold;
-		margin-right: 16px;
-	}
+    #sign {
+        float: right;
+        color: $accent;
+        font-weight: bold;
+        margin-right: 16px;
+    }
 }
