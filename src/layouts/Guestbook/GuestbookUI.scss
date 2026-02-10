@@ -1,0 +1,144 @@
+$bg: #1e1e2e;
+$accent: #89b4fa;
+$bg-2: #181825;
+$bg-3: #11111b;
+$text: #cad3f5;
+$radius: 6px;
+$r-padding: 4px;
+
+@mixin inputs($background, $text-col, $font-size) {
+    background-color: $background;
+    border: 4px solid $accent;
+    border-radius: $radius;
+    color: $text-col;
+    font-family: "JetBrains Mono";
+    padding: $r-padding + 2;
+    font-size: $font-size;
+}
+
+.message {
+    border: 4px solid $accent;
+    background-color: $bg;
+    padding: $r-padding + 4;
+    border-radius: $radius;
+    margin-top: 8px;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+
+        .username, .time {
+            height: 21px;
+            color: $accent;
+            text-decoration: none;
+
+            u {
+                position: relative;
+                top: -8px;
+            }
+
+            img {
+                position: relative;
+                top: -1px;
+            }
+        }
+    }
+
+    p {
+        margin: $r-padding 0 $r-padding 0;
+    }
+}
+
+.input {
+    display: grid;
+
+    grid-template-columns: 6fr 1fr;
+    grid-template-rows: 1fr;
+
+    gap: 8px;
+    height: 40%;
+
+    .fields {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        textarea, input {
+            @include inputs($bg, $text, 0.8rem);
+        }
+    }
+
+    button {
+        @include inputs($accent, $bg-3, 0.8rem);
+        font-weight: 800;
+
+        &:hover {
+            $hover: darken($accent, 5%);
+
+            cursor: pointer;
+            background-color: $hover;
+            border-color: $hover;
+        }
+
+        &:active {
+            $active: darken($accent, 10%);
+
+            background-color: $active;
+            border-color: $active;
+        }
+    }
+}
+
+@media (max-width: 375px) {
+    .message .header .username {
+        u {
+            position: static;
+        }
+
+        img {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 475px) {
+    .input {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+
+        .info {
+            flex-direction: column;
+        }
+    }
+
+    .message {
+        .header > .username, 
+        .header > .time {
+            font-size: 0.8rem;
+
+            u {
+                top: -4px;
+            }
+            
+            img {
+                top: 0;
+            }
+
+            img {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        p {
+            font-size: 0.8rem;
+        }
+    }
+}
+
+@media (max-width: 875px) {
+    .input {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
+}

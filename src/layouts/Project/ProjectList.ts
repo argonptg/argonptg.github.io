@@ -5,9 +5,9 @@ export const projectList = [
 		url: "https://github.com/argonptg/emerald",
 	},
 	{
-		name: "BPO",
+		name: "Ludico",
 		desc: "Um aplicativo simples e intuitivo para organizar e gerenciar sua biblioteca de jogos.",
-		url: "https://github.com/blackpearlorigin/blackpearlorigin",
+		url: "https://github.com/argonptg/Ludico",
 	},
 	{
 		name: "PocketBaseSharp",

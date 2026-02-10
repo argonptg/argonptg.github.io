@@ -53,6 +53,17 @@ $r-padding: 4px;
     margin-top: 1.3rem;
 }
 
+#ring {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    a {
+        color: $accent;
+        text-decoration: none;
+    }
+}
+
 #term-s {
     position: relative;
     top: 5px;

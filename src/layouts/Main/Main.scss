@@ -179,7 +179,7 @@ body {
 
             .title {
                 a {
-                    font-size: 1.7vw;
+                    font-size: clamp(0.9rem, 1.2rem, 1.7vw);
                 }
             }
         }
